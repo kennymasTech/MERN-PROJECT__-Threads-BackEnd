@@ -38,8 +38,6 @@ const signUpUser = async (req, res) => {
             console.log("Error in signupUser: ", error.message)
         }
 
-    
-	
 };
 
 module.exports = { signUpUser };
