@@ -24,7 +24,7 @@ const signUpUser = async(req, res) => {
 
 
     } catch (error) {
-
+        
     }
 }
 
