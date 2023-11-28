@@ -13,6 +13,15 @@ const signUpUser = async(req, res) => {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
 
+        const newUser = new User({
+            name,
+            email,
+            username,
+            password: hashedPassword,
+        })
+
+        await newUser.save()
+
 
     } catch (error) {
 
