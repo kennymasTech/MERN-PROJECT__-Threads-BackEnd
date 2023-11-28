@@ -16,7 +16,7 @@ app.use(express.json({limit : "50mb"}))  // Parse json data inside the req body;
 app.use(express.urlencoded({extended: true}))  // Parse form data inside the req body;
 app.use(cookieParser());
 
-app.use("/api/users", userRoutes)
+app.use("/api/users", userRoutes);
 
 app.get("/", (req,res) => {
     res.send("Welcome Home 🏠")
