@@ -15,3 +15,5 @@ app.use(cookieParser())
 app.get("/", (req,res) => {
     res.send("Welcome Home 🏠")
 })
+
+app.listen(PORT, () => console.log(`Server Running On PORT ${PORT}`));
