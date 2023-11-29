@@ -54,7 +54,14 @@ const loginUser = async (req, res) => {
 
         generateTokenAndSetCookie(user._id, res)
 
-        
+        res.status(200).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            username: user.username,
+            bio: user.bio,
+            profilePi: user.profilePic
+        })
 
     } catch (error) {
         
