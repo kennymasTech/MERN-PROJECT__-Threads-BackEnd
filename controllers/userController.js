@@ -22,6 +22,8 @@ const getUserProfile = async (req, res, next) => {
         }
 
         if(!user)
+        return res.status(400).json({ error: "User Not Found" });
+            res.status(200).json({ message: "Successfully Found A User"})
     } catch (error) {
         
     }
