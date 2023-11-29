@@ -1,36 +1,35 @@
-
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const generateTokenAndSetCookie = require("../utils/helper/generateTokenAndSetCookies");
 const mongoose = require("mongoose");
 
-
-
 const getUserProfile = async (req, res, next) => {
-    // We Fetch The User Profile Either By Username Or UserId
-    // Query Is Either Username Or UserId
+  // We Fetch The User Profile Either By Username Or UserId
+  // Query Is Either Username Or UserId
 
-    const { query } = req.params;
-    try {
-        let user;
+  const { query } = req.params;
+  try {
+    let user;
 
-        // Query Is UserId
-        if(mongoose.Types.ObjectId.isValid(query)) {
-            user = await User.findOne({_id: query}).select("-password").select("-updateAt");
-        } else {
-            // Query Is Username
-            user = await User.findOne({ username: query }).select("-password").select("-updateAt");
-        }
-
-        if(!user)
-        return res.status(400).json({ error: "User Not Found" });
-            res.status(200).json({ message: "Successfully Found A User"})
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-        console.log("Error In Getting User Profile: ", error.message);
+    // Query Is UserId
+    if (mongoose.Types.ObjectId.isValid(query)) {
+      user = await User.findOne({ _id: query })
+        .select("-password")
+        .select("-updateAt");
+    } else {
+      // Query Is Username
+      user = await User.findOne({ username: query })
+        .select("-password")
+        .select("-updateAt");
     }
 
-}
+    if (!user) return res.status(400).json({ error: "User Not Found" });
+    res.status(200).json({ message: "Successfully Found A User" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log("Error In Getting User Profile: ", error.message);
+  }
+};
 
 const signUpUser = async (req, res) => {
   try {
@@ -146,4 +145,10 @@ const followUnFollowUser = async (req, res) => {
   }
 };
 
-module.exports = { followUnFollowUser, signUpUser, loginUser, logoutUser, getUserProfile };
+module.exports = {
+  followUnFollowUser,
+  signUpUser,
+  loginUser,
+  logoutUser,
+  getUserProfile,
+};
