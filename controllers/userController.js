@@ -4,8 +4,8 @@ const generateTokenAndSetCookie = require("../utils/helper/generateTokenAndSetCo
 
 
 
-const getUserProfile = async () => {
-    
+const getUserProfile = async (req, res, next) => {
+
 }
 
 const signUpUser = async (req, res) => {
