@@ -79,8 +79,8 @@ const logOutUser = (req, res) => {
     }
 }
 
-const followUnFollowUser = () => {
-    
+const followUnFollowUser = async (req, res) => {
+
 }
 
 module.exports = { signUpUser, loginUser, logOutUser, followUnFollowUser };
