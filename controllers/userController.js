@@ -92,7 +92,7 @@ const followUnFollowUser = async (req, res) => {
         return res.status(400).json({ error: "User Not Found" });
 
         const isFollowing = currentUser.following.includes(id)
-        if(!isFollowing) {
+        if(isFollowing) {
 
             // Unfollow user
             await User.findByIdAndUpdate(id, {$pull: {followers: req.user._id}})
