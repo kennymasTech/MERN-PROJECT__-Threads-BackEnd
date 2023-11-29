@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const generateTokenAndSetCookie = require("../utils/helper/generateTokenAndSetCookies");
+const mongoose = require("mongoose");
 
 
 
@@ -9,7 +10,7 @@ const getUserProfile = async (req, res, next) => {
     // Query Is Either Username Or UserId
 
     const { query } = req.params;
-    
+
 }
 
 const signUpUser = async (req, res) => {
