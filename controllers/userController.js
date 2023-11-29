@@ -14,7 +14,9 @@ const getUserProfile = async (req, res, next) => {
         let user;
 
         // Query Is UserId
-        if(mongoose.Types.ObjectId.isValid(query)) {}
+        if(mongoose.Types.ObjectId.isValid(query)) {
+            
+        }
     } catch (error) {
         
     }
