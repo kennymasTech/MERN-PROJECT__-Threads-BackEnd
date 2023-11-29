@@ -66,6 +66,6 @@ const loginUser = async (req, res) => {
     } catch (error) {
         
     }
-}
+};
 
 module.exports = { signUpUser, loginUser };
