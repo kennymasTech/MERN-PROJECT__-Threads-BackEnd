@@ -40,7 +40,11 @@ const signUpUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-    
+    try {
+        const { username, password } = req.body
+    } catch (error) {
+        
+    }
 }
 
 module.exports = { signUpUser, loginUser };
