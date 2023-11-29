@@ -43,4 +43,4 @@ const loginUser = async (req, res) => {
 
 }
 
-module.exports = { signUpUser, loginUser };
+module.exports = { signUpUser };
