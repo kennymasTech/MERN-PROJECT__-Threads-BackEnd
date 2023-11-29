@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 const generateTokenAndSetCookie = require("../utils/helper/generateTokenAndSetCookies");
 const mongoose = require("mongoose");
 
-
 const getUserProfile = async (req, res, next) => {
   // We Fetch The User Profile Either By Username Or UserId
   // Query Is Either Username Or UserId
