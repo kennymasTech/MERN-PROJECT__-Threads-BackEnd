@@ -122,4 +122,4 @@ const followUnFollowUser = async (req, res) => {
   }
 };
 
-module.exports = { followUnFollowUser, signUpUser, loginUser, logoutUser };
+module.exports = { followUnFollowUser, signUpUser, loginUser, logoutUser, getUserProfile };
