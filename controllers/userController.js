@@ -6,6 +6,10 @@ const generateTokenAndSetCookie = require("../utils/helper/generateTokenAndSetCo
 
 const getUserProfile = async (req, res, next) => {
     // We Fetch The User Profile Either By Username Or UserId
+    // Query Is Either Username Or UserId
+
+    const { query } = req.params;
+    
 }
 
 const signUpUser = async (req, res) => {
