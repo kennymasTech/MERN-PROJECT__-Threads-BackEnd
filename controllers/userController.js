@@ -37,7 +37,10 @@ const signUpUser = async (req, res) => {
             res.status(500).json({ message: error.message });
             console.log("Error in signupUser: ", error.message)
         };
-
 };
+
+const loginUser = async (req, res) => {
+    
+}
 
 module.exports = { signUpUser };
