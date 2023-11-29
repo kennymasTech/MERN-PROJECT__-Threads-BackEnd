@@ -45,7 +45,7 @@ const loginUser = async (req, res) => {
         const user = await user.findOne({ username: username })
         const isPasswordCorrect = await bcrypt.compare(password, user?.password || "")
 
-        if(!user || !isPasswordCorrect) return ()
+        if(!user || !isPasswordCorrect) return res.status(400).json({ error: "Invalid Username Or Password"})
     } catch (error) {
         
     }
