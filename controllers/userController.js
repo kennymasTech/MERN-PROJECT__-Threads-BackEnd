@@ -80,7 +80,19 @@ const logOutUser = (req, res) => {
 }
 
 const followUnFollowUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const userToModify = await User.findOne(id)
+        const currentUser = await User.findOneById(req.user._id);
 
+        if(id === req.user._id.toString())
+        return res.status(400).json({ error: "You Can Not Follow/Unfollow Yourself"})'
+    
+        '
+        
+    } catch (error) {
+        
+    }
 }
 
 module.exports = { signUpUser, loginUser, logOutUser, followUnFollowUser };
