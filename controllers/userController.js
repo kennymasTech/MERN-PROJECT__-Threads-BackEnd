@@ -71,7 +71,7 @@ const loginUser = async (req, res) => {
 
 const logOutUser = (req, res) => {
     try {
-        
+        res.cookie("jwt", "", {maxAge: 1})
     } catch (error) {
         
     }
