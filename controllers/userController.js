@@ -72,6 +72,7 @@ const loginUser = async (req, res) => {
 const logOutUser = (req, res) => {
     try {
         res.cookie("jwt", "", {maxAge: 1})
+        res.status(200).json({ message: "User logged Out Successfully" });
     } catch (error) {
         
     }
