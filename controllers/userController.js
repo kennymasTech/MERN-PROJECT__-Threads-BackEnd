@@ -21,7 +21,7 @@ const getUserProfile = async (req, res, next) => {
             user = await User.findOne({ username: query }).select("-password").select("-updateAt");
         }
 
-        if()
+        if(!user)
     } catch (error) {
         
     }
