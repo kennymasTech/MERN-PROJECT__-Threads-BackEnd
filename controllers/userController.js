@@ -151,7 +151,7 @@ const updateUser = async () => {
 
   const { name, email, username, password, profilePic, bio } = req.body;
   const userId = req.user_id
-  
+
   try {
     
   } catch (error) {
