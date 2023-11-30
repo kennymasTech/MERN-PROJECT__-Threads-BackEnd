@@ -5,6 +5,7 @@ const {
   getPost,
   deletePost,
   likeUnlikePost,
+  replyToPost,
 } = require("../controllers/postControllers");
 const protectRoute = require("../middleware/protectRoute");
 
@@ -14,6 +15,6 @@ router.get("/:id", getPost);
 router.post("/create", protectRoute, createPost);
 router.delete("/:id", protectRoute, deletePost);
 router.post("/like/:id", protectRoute, likeUnlikePost);
-router.post("/reply/:id", protectRoute, likeUnlikePost);
+router.post("/reply/:id", protectRoute, replyToPost);
 
 module.exports = router;

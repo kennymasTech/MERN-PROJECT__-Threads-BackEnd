@@ -108,4 +108,6 @@ const likeUnlikePost = async (req, res) => {
 
 }
 
-module.exports = { createPost, getPost, deletePost, likeUnlikePost };
+const replyToPost = async (req, res) => {}
+
+module.exports = { createPost, getPost, deletePost, likeUnlikePost, replyToPost };
