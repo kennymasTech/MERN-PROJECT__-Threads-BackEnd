@@ -13,6 +13,6 @@ const router = express.Router();
 router.get("/:id", getPost);
 router.post("/create", protectRoute, createPost);
 router.delete("/:id", protectRoute, deletePost);
-router.delete("/ike/:id", protectRoute, likeUnlikePost);
+router.delete("/like/:id", protectRoute, likeUnlikePost);
 
 module.exports = router;
