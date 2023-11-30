@@ -108,6 +108,33 @@ const likeUnlikePost = async (req, res) => {
 
 }
 
-const replyToPost = async (req, res) => {}
+const replyToPost = async (req, res) => {
+    try {
+        const {id:postId} = req.params;
+        const userId = req.user._id;
+        const {text} = req.body;
+
+        const post = await Post.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post Not Found" });
+    }
+
+    const reply = {
+        text,
+        postedBy: userId
+    }
+
+    post.replies.push(reply)
+    await post.save()
+
+    res.status(200).json({ message: "Post Replied Successfully" });
+
+  } catch (error) {
+    res.status(500).json({ message: error.message }); //  Internal Server Error
+    console.log("Error In Reply To Post: ", error.message);
+  }
+
+}
 
 module.exports = { createPost, getPost, deletePost, likeUnlikePost, replyToPost };
