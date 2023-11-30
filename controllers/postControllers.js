@@ -133,7 +133,19 @@ const replyToPost = async (req, res) => {
   }
 };
 
-const getFeedPost = async (req, res) => {}
+const getFeedPost = async (req, res) => {
+    try {
+    const posts = await Post.find({ postedBy: { $in: req.user.following } })
+      .sort({ createdAt: -1 })
+      .populate("postedBy", "username profilePic");
+
+    res.status(200).json({ posts });
+  } catch (error) {
+    res.status(500).json({ message: error.message }); //  Internal Server Error
+    console.log("Error In Get Feed Post: ", error.message);
+  }
+
+}
 
 module.exports = {
   createPost,
