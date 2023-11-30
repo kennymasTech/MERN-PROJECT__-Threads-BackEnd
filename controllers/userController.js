@@ -180,5 +180,5 @@ module.exports = {
   loginUser,
   logoutUser,
   getUserProfile,
-  updateUser
+  updateUser,
 };
