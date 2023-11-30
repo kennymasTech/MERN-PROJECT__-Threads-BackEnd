@@ -147,11 +147,14 @@ const followUnFollowUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const { name, email, username, password, profilePic, bio } = req.body;
-  const userId = req.user_id;
+  const userId = req.user._id;
 
   try {
     let user = await User.findById(userId);
     if (!user) return res.status(400).json({ message: "User Not Found" });
+
+    if (req.params.id !== userId.toString())
+      return res.status(400).json({ message: "You Cannot Update Other User's Profile"})
 
     if (password) {
       const salt = await bcrypt.genSalt(10);
