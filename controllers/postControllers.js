@@ -78,7 +78,6 @@ const deletePost = async (req, res) => {
 
 const likeUnlikePost = async (req, res) => {
     try {
-
         const {id:postId} = req.params;
         const userId = req.user._id;
 
@@ -91,7 +90,7 @@ const likeUnlikePost = async (req, res) => {
     const userLikedPost = post.likes.includes(userId);
 
     if (userLikedPost) {
-        await post.updateOne({_id:postId}, {$pull:{likes:userId}})
+        await post.updateOne({_id:postId}, {$pull:{likes: userId}})
         res.status(200).json({ message: "Post Unliked Successfully" });
 
     } else {
@@ -100,7 +99,7 @@ const likeUnlikePost = async (req, res) => {
 
         res.status(200).json({ message: "Post Liked Successfully" });
     }
-    
+
   } catch (error) {
     res.status(500).json({ message: error.message }); //  Internal Server Error
     console.log("Error In LikeUnlike Post: ", error.message);
