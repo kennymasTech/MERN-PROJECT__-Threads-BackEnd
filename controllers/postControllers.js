@@ -9,6 +9,18 @@ const createPost = async (req, res) => {
         }
 
         const user = await User.findById(postedBy);
+
+        if ( !user ) {
+            return res.status(400).json({ message: "User Not Found" })
+        }
+
+        const maxLength = 500
+
+        if ( text.length > maxLength ) {
+            return res.status(400).json({ message: `Text Length Must Be Less Than ${maxLength} characters` })
+        }
+
+        const newPost
         
     } catch (error) {
         res.status(500).json({ message: error.message }); //Internal server error
