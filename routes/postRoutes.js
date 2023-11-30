@@ -7,5 +7,6 @@ const router = express.Router();
 
 router.get("/:id", getPost)
 router.post("/create", createPost, protectRoute)
+router.delete("/:id", deletePost)
 
 module.exports = router;
