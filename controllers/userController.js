@@ -143,9 +143,18 @@ const followUnFollowUser = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: error.message }); //Internal server error
-    console.log("Error In FollowUnFollowUser: ", error.message);
+    console.log("Error In Update User: ", error.message);
   }
 };
+
+const updateUser = async () => {
+  try {
+    
+  } catch (error) {
+    res.status(500).json({ message: error.message }); //Internal server error
+    console.log("Error In FollowUnFollowUser: ", error.message);
+  }
+}
 
 module.exports = {
   followUnFollowUser,
@@ -153,4 +162,5 @@ module.exports = {
   loginUser,
   logoutUser,
   getUserProfile,
+  updateUser
 };
