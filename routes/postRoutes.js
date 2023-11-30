@@ -6,7 +6,7 @@ const protectRoute = require('../middleware/protectRoute');
 const router = express.Router();
 
 router.get("/:id", getPost)
-router.post("/create", createPost, protectRoute)
-router.delete("/:id", deletePost, protectRoute)
+router.post("/create", protectRoute, createPost)
+router.delete("/:id", protectRoute, deletePost)
 
 module.exports = router;
