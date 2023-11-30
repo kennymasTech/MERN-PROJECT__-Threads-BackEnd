@@ -64,7 +64,7 @@ const deletePost = async (req, res) => {
 
     } catch (error) {
         res.status(500).json({ message: error.message });  //  Internal Server Error
-        console.log("Error In Deleting A Post: ", error.message);
+        console.log("Error In Delete Post: ", error.message);
     }
 
 }
