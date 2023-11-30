@@ -6,6 +6,7 @@ const {
   deletePost,
   likeUnlikePost,
   replyToPost,
+  getFeedPost,
 } = require("../controllers/postControllers");
 const protectRoute = require("../middleware/protectRoute");
 

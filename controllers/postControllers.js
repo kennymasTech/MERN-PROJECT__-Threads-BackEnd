@@ -133,10 +133,13 @@ const replyToPost = async (req, res) => {
   }
 };
 
+const getFeedPost = async (req, res) => {}
+
 module.exports = {
   createPost,
   getPost,
   deletePost,
   likeUnlikePost,
   replyToPost,
+  getFeedPost,
 };
