@@ -1,4 +1,3 @@
-
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
 
@@ -21,11 +20,9 @@ const createPost = async (req, res) => {
     const maxLength = 500;
 
     if (text.length > maxLength) {
-      return res
-        .status(400)
-        .json({
-          message: `Text Length Must Be Less Than ${maxLength} characters`,
-        });
+      return res.status(400).json({
+        message: `Text Length Must Be Less Than ${maxLength} characters`,
+      });
     }
 
     const newPost = new Post({ postedBy, text, img });
@@ -78,11 +75,11 @@ const deletePost = async (req, res) => {
 };
 
 const likeUnlikePost = async (req, res) => {
-    try {
-        const {id:postId} = req.params;
-        const userId = req.user._id;
+  try {
+    const { id: postId } = req.params;
+    const userId = req.user._id;
 
-        const post = await Post.findById(postId);
+    const post = await Post.findById(postId);
 
     if (!post) {
       return res.status(404).json({ message: "Post Not Found" });
@@ -91,53 +88,54 @@ const likeUnlikePost = async (req, res) => {
     const userLikedPost = post.likes.includes(userId);
 
     if (userLikedPost) {
-        await Post.updateOne({_id:postId}, {$pull:{likes: userId}})
-        res.status(200).json({ message: "Post Unliked Successfully" });
-
+      await Post.updateOne({ _id: postId }, { $pull: { likes: userId } });
+      res.status(200).json({ message: "Post Unliked Successfully" });
     } else {
-        post.likes.push(userId)
-        await post.save()
+      post.likes.push(userId);
+      await post.save();
 
-        res.status(200).json({ message: "Post Liked Successfully" });
+      res.status(200).json({ message: "Post Liked Successfully" });
     }
-
   } catch (error) {
     res.status(500).json({ message: error.message }); //  Internal Server Error
     console.log("Error In LikeUnlike Post: ", error.message);
   }
-
-}
+};
 
 const replyToPost = async (req, res) => {
-    try {
-        const {text} = req.body;
-        const postId = req.params.id;
-        const userId = req.user._id;
-        const userProfilePic = req.user.profilePic;
-        const username = req.user.username;
+  try {
+    const { text } = req.body;
+    const postId = req.params.id;
+    const userId = req.user._id;
+    const userProfilePic = req.user.profilePic;
+    const username = req.user.username;
 
-        if ( !text ) {
-            return res.status(400).json({ message: "Text Field Is Required" });
-        }
+    if (!text) {
+      return res.status(400).json({ message: "Text Field Is Required" });
+    }
 
-        const post = await Post.findById(postId);
+    const post = await Post.findById(postId);
 
-        if (!post) {
-            return res.status(404).json({ message: "Post Not Found" });
-        }
+    if (!post) {
+      return res.status(404).json({ message: "Post Not Found" });
+    }
 
-        const reply = {userId, text, userProfilePic, username};
+    const reply = { userId, text, userProfilePic, username };
 
-        post.replies.push(reply);
-        await post.save();
+    post.replies.push(reply);
+    await post.save();
 
-        res.status(200).json({ message: "Reply Added Successfully", post });
-
+    res.status(200).json({ message: "Reply Added Successfully", post });
   } catch (error) {
     res.status(500).json({ message: error.message }); //  Internal Server Error
     console.log("Error In Reply To Post: ", error.message);
   }
+};
 
-}
-
-module.exports = { createPost, getPost, deletePost, likeUnlikePost, replyToPost };
+module.exports = {
+  createPost,
+  getPost,
+  deletePost,
+  likeUnlikePost,
+  replyToPost,
+};
