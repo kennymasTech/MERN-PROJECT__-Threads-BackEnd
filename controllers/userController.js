@@ -1,9 +1,7 @@
-
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const generateTokenAndSetCookie = require("../utils/helper/generateTokenAndSetCookies");
 const mongoose = require("mongoose");
-
 
 const getUserProfile = async (req, res, next) => {
   // We Fetch The User Profile Either By Username Or UserId
@@ -148,35 +146,33 @@ const followUnFollowUser = async (req, res) => {
 };
 
 const updateUser = async () => {
-
   const { name, email, username, password, profilePic, bio } = req.body;
-  const userId = req.user_id
+  const userId = req.user_id;
 
   try {
-    let user = await User.findById(userId)
-    if(!user) return res.status(400).json({ message: "User Not Found"})
+    let user = await User.findById(userId);
+    if (!user) return res.status(400).json({ message: "User Not Found" });
 
     if (password) {
-      const salt = await bcrypt.genSalt(10)
-      const hashedPassword = await bcrypt.hash(password, salt)
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
       user.password = hashedPassword;
     }
 
-    user.name = name || user.name
-    user.email = email || user.email
-    user.username = username || user.username
-    user.profilePic = profilePic || user.profilePic
-    user.bio = bio || user.bio
+    user.name = name || user.name;
+    user.email = email || user.email;
+    user.username = username || user.username;
+    user.profilePic = profilePic || user.profilePic;
+    user.bio = bio || user.bio;
 
-    user = await user.save()
+    user = await user.save();
 
-    res.status(200).json({ message: "Profile Updated Successfully", user})
-    
+    res.status(200).json({ message: "Profile Updated Successfully", user });
   } catch (error) {
     res.status(500).json({ message: error.message }); //Internal server error
     console.log("Error In FollowUnFollowUser: ", error.message);
   }
-}
+};
 
 module.exports = {
   followUnFollowUser,
@@ -184,5 +180,5 @@ module.exports = {
   loginUser,
   logoutUser,
   getUserProfile,
-  updateUser
+  updateUser,
 };
