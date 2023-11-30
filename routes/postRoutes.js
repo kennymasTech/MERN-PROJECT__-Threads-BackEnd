@@ -1,13 +1,17 @@
-
-const express = require('express');
-const { createPost, getPost, deletePost, likeUnlikePost } = require('../controllers/postControllers');
-const protectRoute = require('../middleware/protectRoute');
+const express = require("express");
+const {
+  createPost,
+  getPost,
+  deletePost,
+  likeUnlikePost,
+} = require("../controllers/postControllers");
+const protectRoute = require("../middleware/protectRoute");
 
 const router = express.Router();
 
-router.get("/:id", getPost)
-router.post("/create", protectRoute, createPost)
-router.delete("/:id", protectRoute, deletePost)
-router.delete("/ike/:id", protectRoute, likeUnlikePost)
+router.get("/:id", getPost);
+router.post("/create", protectRoute, createPost);
+router.delete("/:id", protectRoute, deletePost);
+router.delete("/ike/:id", protectRoute, likeUnlikePost);
 
 module.exports = router;
