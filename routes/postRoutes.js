@@ -5,7 +5,7 @@ const protectRoute = require('../middleware/protectRoute');
 
 const router = express.Router();
 
-router.get("/", getPost)
+router.get("/:id", getPost)
 router.post("/create", createPost, protectRoute)
 
 module.exports = router;
