@@ -1,5 +1,5 @@
+const Post = require("../models/postModel");
 const User = require("../models/userModel");
-// const { post } = require("../routes/userRoutes");
 
 const createPost = async (req, res) => {
     try {
@@ -21,7 +21,11 @@ const createPost = async (req, res) => {
             return res.status(400).json({ message: `Text Length Must Be Less Than ${maxLength} characters` })
         }
 
-        const newPost = new post
+        const newPost = new Post({ postedBy, text, img})
+
+        await newPost.save();
+
+        res.status(201).json({ message: "Post Created Successfully", newPost })
         
     } catch (error) {
         res.status(500).json({ message: error.message }); //Internal server error
