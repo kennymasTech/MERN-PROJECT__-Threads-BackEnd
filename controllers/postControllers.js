@@ -61,7 +61,8 @@ const deletePost = async (req, res) => {
         if ( post.postedBy.toString() !== req.user._id.toString() ) {
             return res.status(401).json({ message: "Unauthorized To Delete This Post" })
         }
-        await post.deleteOne();
+
+        await post.findByIdAndDelete(req.params.id);
 
         res.status(200).json({ message: "Post Deleted Successfully" })
 
