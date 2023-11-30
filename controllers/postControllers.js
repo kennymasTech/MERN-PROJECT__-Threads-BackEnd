@@ -110,25 +110,26 @@ const likeUnlikePost = async (req, res) => {
 
 const replyToPost = async (req, res) => {
     try {
-        const {id:postId} = req.params;
-        const userId = req.user._id;
         const {text} = req.body;
+        const postId = req.params.id;
+        const userId = req.user._id;
+        const userProfilePic = req.user.profilePic;
+        const username = req.user.username;
+
+        if ( !text ) {
+            return res.status(400).json({ message: "Text Field Is Required" });
+        }
 
         const post = await Post.findById(postId);
 
-    if (!post) {
-      return res.status(404).json({ message: "Post Not Found" });
-    }
+        if (!post) {
+            return res.status(404).json({ message: "Post Not Found" });
+        }
 
-    const reply = {
-        text,
-        postedBy: userId
-    }
+        const reply = {userId, text, userProfilePic, username};
 
-    post.replies.push(reply)
-    await post.save()
-
-    res.status(200).json({ message: "Post Replied Successfully" });
+        post.replies.push(reply);
+        await post.save();
 
   } catch (error) {
     res.status(500).json({ message: error.message }); //  Internal Server Error
