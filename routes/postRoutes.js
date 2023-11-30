@@ -1,3 +1,4 @@
+
 const express = require('express');
 const { createPost } = require('../controllers/postControllers');
 const protectRoute = require('../middleware/protectRoute');
