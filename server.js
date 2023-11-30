@@ -17,6 +17,7 @@ app.use(express.urlencoded({extended: true}))  // Parse form data inside the req
 app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
 
 app.get("/", (req,res) => {
     res.send("Welcome Home 🏠")
