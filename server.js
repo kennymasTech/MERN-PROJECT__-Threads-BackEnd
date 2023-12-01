@@ -23,8 +23,7 @@ app.get("/", (req,res) => {
     res.send("Welcome Home 🏠")
 })
 
-mongoose.connect(process.env.MONGO_URI)
-.then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
     app.listen(PORT, () => console.log(`Server Is Running On PORT ${PORT}`));
 
 }).catch((err) => console.log(err));
