@@ -20,3 +20,4 @@ router.post("/like/:id", protectRoute, likeUnlikePost);
 router.post("/reply/:id", protectRoute, replyToPost);
 
 module.exports = router;
+
