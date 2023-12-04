@@ -155,7 +155,7 @@ const getFeedPost = async (req, res) => {
   }
 };
 
-const getUserPost = async (req, res) => {
+const getUserPosts = async (req, res) => {
   const { username } = req.params;
   try {
     const user = await User.findOne({ username }); //  Find User By Username
@@ -177,4 +177,5 @@ module.exports = {
   likeUnlikePost,
   replyToPost,
   getFeedPost,
+  getUserPosts,
 };
