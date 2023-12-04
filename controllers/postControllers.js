@@ -155,6 +155,21 @@ const getFeedPost = async (req, res) => {
   }
 };
 
+const getUserPost = async (req, res) => {
+  const { username } = req.params;
+  try {
+    const user = await User.findOne({ username }); //  Find User By Username
+    
+    if (!user) {
+      return res.status(404).json({ message: "User Not Found" });
+    }
+    const posts = await Post.find({ postedBy: user._id }).sort({ createdAt: -1 });
+    res.status(200).json({ posts });
+  } catch (error) {
+    res.status(500).json({ message: error.message }); //  Internal Server Error
+  }
+}
+
 module.exports = {
   createPost,
   getPost,
