@@ -12,6 +12,9 @@ dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 5000;
+cloudinary.config({
+    cloud_name : process.env.CLOUD_NAME,
+})
 
 app.use(express.json({limit : "50mb"}))  // Parse json data inside the req body;
 app.use(express.urlencoded({extended: true}))  // Parse form data inside the req body;
