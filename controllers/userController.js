@@ -183,7 +183,7 @@ const updateUser = async (req, res) => {
 
     user = await user.save();
 
-    user.password = null
+    user.password = 
 
     res.status(200).json( user );
 
