@@ -151,7 +151,7 @@ const followUnFollowUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const { name, email, username, password, bio } = req.body;
-  const { profilePic } = req.body;
+  let { profilePic } = req.body;
   const userId = req.user._id;
 
   try {
@@ -186,7 +186,7 @@ const updateUser = async (req, res) => {
     res.status(200).json({ message: "Profile Updated Successfully", user });
   } catch (error) {
     res.status(500).json({ error: error.message }); //Internal server error
-    console.log("Error In FollowUnFollowUser: ", error.message);
+    console.log("Error In Update User: ", error.message);
   }
 };
 
