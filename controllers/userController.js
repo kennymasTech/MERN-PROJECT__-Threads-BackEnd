@@ -183,7 +183,7 @@ const updateUser = async (req, res) => {
 
     user = await user.save();
 
-    res.status(200).json({ message: "Profile Updated Successfully", user });
+    res.status(200).json({ user });
   } catch (error) {
     res.status(500).json({ error: error.message }); //Internal server error
     console.log("Error In Update User: ", error.message);
