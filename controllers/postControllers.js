@@ -1,4 +1,3 @@
-
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
 const cloudinary = require("cloudinary").v2;
@@ -28,9 +27,9 @@ const createPost = async (req, res) => {
       });
     }
 
-    if ( img ) {
-      const uploadedResponse = await cloudinary.uploader.upload(img)
-      img = uploadedResponse.secure_url
+    if (img) {
+      const uploadedResponse = await cloudinary.uploader.upload(img);
+      img = uploadedResponse.secure_url;
     }
 
     const newPost = new Post({ postedBy, text, img });
@@ -166,11 +165,13 @@ const getUserPosts = async (req, res) => {
   const { username } = req.params;
   try {
     const user = await User.findOne({ username }); //  Find User By Username
-    
+
     if (!user) {
       return res.status(404).json({ message: "User Not Found" });
     }
-    const posts = await Post.find({ postedBy: user._id }).sort({ createdAt: -1 });
+    const posts = await Post.find({ postedBy: user._id }).sort({
+      createdAt: -1,
+    });
     res.status(200).json({ posts });
   } catch (error) {
     res.status(500).json({ message: error.message }); //  Internal Server Error
