@@ -1,4 +1,3 @@
-
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
 const cloudinary = require("cloudinary").v2;
@@ -12,7 +11,7 @@ const createPost = async (req, res) => {
       return res
         .status(400)
         .json({ message: "PostedBy And Text Field Are Required" });
-    } 
+    }
 
     const user = await User.findById(postedBy);
 
