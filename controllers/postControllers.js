@@ -12,7 +12,7 @@ const createPost = async (req, res) => {
       return res
         .status(400)
         .json({ message: "PostedBy And Text Field Are Required" });
-    }
+    } 
 
     const user = await User.findById(postedBy);
 
