@@ -188,4 +188,3 @@ module.exports = {
   getFeedPost,
   getUserPosts,
 };
-
