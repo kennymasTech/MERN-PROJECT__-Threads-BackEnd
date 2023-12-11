@@ -14,10 +14,10 @@ const router = express.Router();
 
 router.get("/feed", protectRoute, getFeedPost);
 router.get("/:id", getPost);
+router.post("/user/:username", getUserPosts);
 router.post("/create", protectRoute, createPost);
 router.delete("/:id", protectRoute, deletePost);
 router.put("/like/:id", protectRoute, likeUnlikePost);
-router.post("/reply/:id", protectRoute, replyToPost);
-router.post("/user/:username", getUserPosts);
+router.put("/reply/:id", protectRoute, replyToPost);
 
 module.exports = router;
