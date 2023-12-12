@@ -43,7 +43,7 @@ const createPost = async (req, res) => {
     console.log("Error In FollowUnFollowUser: ", error.message);
   }
 };
- 
+
 const getPost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
